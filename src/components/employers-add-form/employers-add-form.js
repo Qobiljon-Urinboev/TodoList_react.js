@@ -33,6 +33,7 @@ class EmployersAddForm extends Component {
             type="text"
             className="form-control new-post-label"
             placeholder="Как его зовут?"
+            required
             name="name"
             value={name}
             onChange={this.onValueChange}
@@ -41,6 +42,7 @@ class EmployersAddForm extends Component {
             type="number"
             className="form-control new-post-label"
             placeholder="З/П в $?"
+            required
             name="salary"
             value={salary}
             onChange={this.onValueChange}
