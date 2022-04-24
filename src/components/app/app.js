@@ -32,39 +32,39 @@ class App extends Component {
   };
   addItem = (name, salary) => {
     const newItem = {
-      name: localStorage.setItem('name',name),
-      salary: localStorage.setItem('salary',salary),
-      increase: localStorage.setItem('increase',false),
-      rise: localStorage.setItem('rise',false),
-      id: localStorage.setItem('id', this.maxId++),
+      name,
+      salary,
+      increase: false,
+      rise: false,
+      id: this.maxId++,
     };
-    
-    const b = JSON.parse (localStorage.getItem (newItem));
-    console.log(newItem);
-    console.log(b);
+   localStorage.setItem(("item " + this.maxId), JSON.stringify(newItem))
+   const getStorge = JSON.parse(localStorage.getItem("item " + this.maxId))
+   console.log(getStorge);
     this.setState (({data}) => {
-      const newArr = [...data, b];
+      const newArr = [...data, getStorge];
       return {
         data: newArr,
       };
     });
   };
-  onValueChange = (id,e) => {
-    const salary = Object.keys(this.state.data[id-1])[1]
+  onValueChange = (id, e) => {
+    const salary = Object.keys (this.state.data[id - 1])[1];
+    console.log(salary)
     const editSalary = {
-      [salary]: e
-    }
+      [salary]: e,
+    };
     this.setState (({data}) => ({
       data: data.map (item => {
-       if(item.id === id){
-        return{...item, ...editSalary}
-       }else{
-         return item
-       }
+        if (item.id === id) {
+          return {...item, ...editSalary};
+        } else {
+          return item;
+        }
       }),
     }));
     console.log (e);
-    console.log(this.state.data);
+    console.log (this.state.data);
   };
   onToggleProp = (id, prop) => {
     this.setState (({data}) => ({
@@ -93,7 +93,7 @@ class App extends Component {
         return items.filter (item => item.rise);
 
       case 'moreThen1000':
-        return items.filter (item => item.salary > 1000);
+        return items.filter (item => item.salary > 1000).sort();
       default:
         return items;
     }

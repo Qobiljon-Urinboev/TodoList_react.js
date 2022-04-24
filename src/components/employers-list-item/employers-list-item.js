@@ -27,9 +27,10 @@ class EmployeesListItem extends Component {
           type="text"
           className="list-group-item-input"
           defaultValue={salary}
+          maxLength={6}
           onChange={onValueChange}
         />
-        <span>$</span>
+        <span className="list-group-item-input">$</span>
        </div>
         <div className="d-flex justify-content-center align-items-center">
           <button

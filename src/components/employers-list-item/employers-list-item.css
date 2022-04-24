@@ -26,9 +26,16 @@
   line-height: 35px;
   font-size: 20px;
   text-align: center;
-  border: 0;
+  border: none;
 }
-
+.list-group-item input::-webkit-outer-spin-button,
+.list-group-item input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.list-group-item input:focus, textarea:focus, select:focus {
+  outline: none !important;
+}
 .list-group-item button {
   width: 35px;
   height: 35px;

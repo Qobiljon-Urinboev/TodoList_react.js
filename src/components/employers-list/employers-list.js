@@ -8,19 +8,18 @@ const EmployersList = ({data, onDelete, onToggleProp, onValueChange}) => {
       <EmployersListItem
         key={id}
         {...itemProps}
-        onDelete={() => onDelete(id)}
-        onToggleProp={(e)=> onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
-        onValueChange={(e)=>onValueChange(id, e.target.value)}
-
+        onDelete={() => onDelete (id)}
+        onToggleProp={e =>
+          onToggleProp (id, e.currentTarget.getAttribute ('data-toggle'))}
+        onValueChange={e =>
+          onValueChange (id, e.target.value.replace (/\s/g, ''))}
       />
     );
-  
   });
 
   return (
     <ul className="app-list list-group">
-      {data.length ? elements : <Empty/>}
-      
+      {data.length ? elements : <Empty />}
     </ul>
   );
 };
